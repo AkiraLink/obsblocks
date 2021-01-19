@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated", //handheld -> weapons
+  "textures": {
+    "layer0": "obsblocks:items/obsidian_heart"
+  }
+}

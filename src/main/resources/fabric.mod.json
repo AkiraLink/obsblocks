@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "obsblocks",
+
+  "version": "${version}",
+
+  "name": "Obsblocks",
+  "description": "Obsblocks is a mod featuring a new dimension full of darkness and obsidian <3",
+  "authors": [
+    "AkiraLink"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/obsblocks/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.akiralink.obsblocks.Obsblocks"
+    ]
+  },
+  "mixins": [
+    "obsblocks.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

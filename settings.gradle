@@ -1,0 +1,13 @@
+pluginManagement {
+    repositories {
+		jcenter()
+        maven {
+			url = 'https://jitpack.io'
+			name = 'Custom Portal Api'
+			url = "https://dl.bintray.com/kyrptonaught/customportalapi"
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
+        }
+        gradlePluginPortal()
+    }
+}

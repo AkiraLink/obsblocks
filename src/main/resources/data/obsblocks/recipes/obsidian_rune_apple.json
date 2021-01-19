@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#G#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "obsblocks:obsidian_rune_piece"
+    },
+    "G": {
+      "item": "obsblocks:obsidian_apple"
+    }
+  },
+  "result": {
+    "item": "obsblocks:obsidian_rune_apple",
+    "count": 1
+  }
+}

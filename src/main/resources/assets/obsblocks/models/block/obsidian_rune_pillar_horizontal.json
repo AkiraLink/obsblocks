@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "obsblocks:blocks/obsidian_rune_pillar",
+    "side": "obsblocks:blocks/obsidian_rune_pillar_top"
+  }
+}
