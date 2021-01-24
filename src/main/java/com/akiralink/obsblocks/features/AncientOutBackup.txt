@@ -1,0 +1,178 @@
+package com.akiralink.obsblocks.features;
+
+import com.akiralink.obsblocks.GeneralUtils;
+import com.mojang.serialization.Codec;
+import net.minecraft.block.Blocks;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3i;
+import net.minecraft.world.Heightmap;
+import net.minecraft.world.StructureWorldAccess;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.chunk.ChunkGenerator;
+import net.minecraft.world.gen.feature.DefaultFeatureConfig;
+import net.minecraft.world.gen.feature.Feature;
+
+import java.nio.file.DirectoryStream;
+import java.util.Random;
+
+public class AncientEnergyOutbreak extends Feature<DefaultFeatureConfig> {
+    public AncientEnergyOutbreak(Codec<DefaultFeatureConfig> config) {
+        super(config);
+    }
+
+    @Override
+    public boolean generate(StructureWorldAccess world, ChunkGenerator generator, Random random, BlockPos pos,
+                            DefaultFeatureConfig config) {
+        BlockPos topPos = world.getTopPosition(Heightmap.Type.WORLD_SURFACE, pos);
+        //BlockPos start_position = new BlockPos(0,20,0);
+        Vec3i pozition = new Vec3i(topPos.getX(), topPos.getY(), topPos.getZ());
+        Direction offset = Direction.NORTH;
+        BlockPos start_position = new BlockPos(pozition);
+        start_position.north();
+        GeneralUtils.Randomizer Randomizer = new GeneralUtils.Randomizer();
+        System.out.println("Starting New Generation!");
+        int loopCount = Randomizer.generate(0, 5);
+
+        /// NEW CODE
+        int height = Randomizer.generate(1, 20);
+        System.out.println("Height:" + height);
+
+        for (int y = 1; y < height; y++) {
+            //System.out.println("Loop-Counter is: "+countforloops);
+            System.out.println("Setting Block" + y);
+            System.out.println("TopPos:" + topPos);
+
+            pozition = new Vec3i(pozition.getX(), pozition.getY() + 1, pozition.getZ());
+            start_position = new BlockPos(pozition);
+            System.out.println("StartPosition:" + start_position);
+
+            world.setBlockState(start_position, Blocks.CRYING_OBSIDIAN.getDefaultState(), 3);
+        }
+
+
+
+        /// BROKEN CODE
+        /*
+        for (int x = 0; x <= 20; x++)
+        {
+            Vec3i og_pos = new Vec3i(topPos.getX(), topPos.getY(), topPos.getZ());
+            int height = Randomizer.generate(1, 20);
+            // for Corners!!
+            //world.getBlockState(topPos.offset);
+            //BlockPos pozitionCheck;
+
+            Direction new_offset = GeneralUtils.rotate(offset);
+            //Direction new_offset = offset.rotateYClockwise();
+            Vec3i pozitionCheck_ = topPos;
+            int a = 0;
+            int b = 0;
+            int c = 0;
+            if (new_offset == Direction.EAST) {
+                a = a + 1;
+            }
+            if (new_offset == Direction.NORTH) {
+                c = c - 1;
+            }
+            if (new_offset == Direction.SOUTH) {
+                c = c + 1;
+            }
+            if (new_offset == Direction.WEST) {
+                a = a - 1;
+            }
+            pozitionCheck_ = new Vec3i(topPos.getX() + a, topPos.getY() + b, topPos.getZ() + c);
+            BlockPos pozitionPos = new BlockPos(pozitionCheck_);
+            if (world.isAir(pozitionPos) == true) {
+                System.out.println("World is Air = True!");
+                topPos = pozitionPos;
+                topPos.offset(new_offset);
+                offset = new_offset;
+            }
+            else{
+
+                /// for normal
+                if (offset == Direction.EAST) {
+                    a = a + 1;
+                }
+                if (offset == Direction.NORTH) {
+                    c = c - 1;
+                }
+                if (offset == Direction.SOUTH) {
+                    c = c + 1;
+                }
+                if (offset == Direction.WEST) {
+                    a = a - 1;
+                }
+
+                pozition = new Vec3i(topPos.getX() + a, topPos.getY() + b, topPos.getZ() + c);
+                pozitionPos = new BlockPos(pozition);
+                topPos = pozitionPos;
+                pozition = topPos;
+
+            }
+
+
+
+            System.out.println("Step:" + loopCount);
+            int countforloops = 1;
+
+            if (og_pos != topPos){
+                for (int y = 1; y < height; y++) {
+                    countforloops++;
+                    System.out.println("Loop-Counter is: "+countforloops);
+                    System.out.println("Setting Block" + y);
+                    System.out.println("TopPos:" + topPos);
+
+                    pozition = new Vec3i(pozition.getX(), pozition.getY() + 1, pozition.getZ());
+                    start_position = new BlockPos(pozition);
+                    System.out.println("StartPosition:" + start_position);
+
+                    world.setBlockState(start_position, Blocks.CRYING_OBSIDIAN.getDefaultState(), 3);
+            }
+
+            }
+            og_pos = topPos;
+            }
+
+        /*
+            public void check(BlockPos tp) {
+                BlockPos pozitionCheck = pos;
+                Direction new_offset = offset.rotateYClockwise();
+                Vec3i pozitionCheck_ = topPos;
+                int a = 0;
+                int b = 0;
+                int c = 0;
+                if (offset == Direction.EAST) {
+                    a = a+1;
+                }
+                if (offset == Direction.NORTH) {
+                    c = c-1;
+                }
+                if (offset == Direction.SOUTH) {
+                    c = c+1;
+                }
+                if (offset == Direction.WEST) {
+                    a = a -1;
+                }
+                pozitionCheck_ = new Vec3i(topPos.getX()+a, topPos.getY()+b, topPos.getZ()+c);
+                BlockPos pozitionPos = new BlockPos(pozition);
+                if (world.isAir(pozitionPos)== true){
+                    topPos = pozitionCheck;
+            }
+        };
+        /*
+        for (int y = 1; y <= 15; y++) {
+            offset = offset.rotateYClockwise();
+            world.setBlockState(topPos.up(y).offset(offset), Blocks.STONE.getDefaultState(), 3);
+        }
+
+         */
+
+
+
+
+        return true;
+    }
+}
+

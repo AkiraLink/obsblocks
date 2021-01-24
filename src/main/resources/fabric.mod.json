@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "obsblocks",
 
-  "version": "${version}",
+  "version": "1.0.0",
 
   "name": "Obsblocks",
   "description": "Obsblocks is a mod featuring a new dimension full of darkness and obsidian <3",
@@ -10,8 +10,8 @@
     "AkiraLink"
   ],
   "contact": {
-    "homepage": "",
-    "sources": ""
+    "homepage": "https://github.com/AkiraLink",
+    "sources": "https://github.com/AkiraLink/obsblocks"
   },
 
   "license": "CC0-1.0",

@@ -65,5 +65,6 @@ public class ModBlocks {
         Registry.register(Registry.BLOCK, new Identifier(Obsblocks.MOD_ID, "obsidian_rune_pillar"),OBSIDIAN_RUNE_PILLAR);
         Registry.register(Registry.BLOCK, new Identifier(Obsblocks.MOD_ID, "obsidian_rune_heartblock"), OBSIDIAN_RUNE_HEARTBLOCK);
         Registry.register(Registry.BLOCK, new Identifier(Obsblocks.MOD_ID, "obsidian_rune_ore"), OBSIDIAN_RUNE_ORE);
+
     }
 }

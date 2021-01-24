@@ -35,7 +35,9 @@ dependencies {
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
 	//modImplementation 'com.github.Virtuoel:Pehkui:1.16.3-c88cfe6b4a-1'
-	compile 'com.github.Virtuoel:Pehkui:1.16.3-c88cfe6b4a-1'
+	//implementation 'com.github.Virtuoel:Pehkui:-SNAPSHOT'
+	modImplementation fileTree(dir: 'lib', include: ['*.jar'])
+	//compile 'com.github.Virtuoel:Pehkui:1.16.3-c88cfe6b4a-1'
 	//implementation 'com.github.Virtuoel:Pehkui:Tag'
 	//compile 'com.github.Virtuoel:Pehkui:Tag'
 }

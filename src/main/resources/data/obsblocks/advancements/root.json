@@ -1,0 +1,38 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "A Land once known",
+            "color": "dark_purple",
+            "bold": true,
+            "italic": true,
+            "underlined": false
+        },
+        "description": {
+            "text": "Entering the Ancient Land",
+            "underlined": false,
+            "strikethrough": false,
+            "obfuscated": false
+        },
+        "icon": {
+            "item": "minecraft:obsidian"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false,
+        "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+    },
+    "criteria": {
+        "AncientTrigger": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "obsblocks:ancientland",
+                "dimension": "overworld"
+            }
+        }
+    },
+    "rewards": {
+        "experience": 5
+    }
+}
