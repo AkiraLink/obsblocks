@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.obsidian_rune_heartblock.new": {
+		"portalopening": {
 			"animation_length": 19,
 			"bones": {
 				"Light": {

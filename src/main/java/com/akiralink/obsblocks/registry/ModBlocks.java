@@ -10,6 +10,7 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import software.bernie.example.block.tile.BotariumTileEntity;
 import software.bernie.example.block.tile.FertilizerTileEntity;
 import software.bernie.example.registry.BlockRegistry;
 import software.bernie.geckolib3.util.RegistryUtils;
@@ -19,8 +20,8 @@ public class ModBlocks {
     
     // Blocks
 
-    public static BlockEntityType<HeartblockEntity> HEARTBLOCK_V2;
-    public static final HeartblockClass OBSIDIAN_RUNE_HEARTBLOCKV2 = new HeartblockClass(Block.Settings.of(Material.STONE).nonOpaque());
+    public static final BlockEntityType<HeartblockEntity> HEARTBLOCK_V2;
+    public static final HeartblockClass OBSIDIAN_RUNE_HEARTBLOCKV2 = new HeartblockClass();
     public static final Heartblock OBSIDIAN_RUNE_HEARTBLOCK = new Heartblock(Block.Settings.of(Material.STONE).nonOpaque());
 
     public static final Block OBSIDIAN_RUNE_ORE = new Block(FabricBlockSettings.
@@ -55,8 +56,12 @@ public class ModBlocks {
 
 
     // Register Method
+
+    static {
+        HEARTBLOCK_V2 = RegistryUtils.registerBlockEntity("heartblock_v2", BlockEntityType.Builder.create(HeartblockEntity::new, new Block[]{ModBlocks.OBSIDIAN_RUNE_HEARTBLOCKV2}));
+    }
     public static void registerBlocks(){
-        HEARTBLOCK_V2 = RegistryUtils.registerBlockEntity("heartblockv2", BlockEntityType.Builder.create(HeartblockEntity::new, new Block[]{ModBlocks.OBSIDIAN_RUNE_HEARTBLOCKV2}));
+        //HEARTBLOCK_V2 = RegistryUtils.registerBlockEntity("heartblockv2", BlockEntityType.Builder.create(HeartblockEntity::new, new Block[]{ModBlocks.OBSIDIAN_RUNE_HEARTBLOCKV2}));
         //HEARTBLOCK_V2 = Registry.register(Registry.BLOCK_ENTITY_TYPE, "obsblocks:heartblockv2", BlockEntityType.Builder.create(HeartblockEntity::new, OBSIDIAN_RUNE_HEARTBLOCKV2 ).build(null));
         Registry.register(Registry.BLOCK, new Identifier(Obsblocks.MOD_ID, "obsidian_rune_heartblockv2"),OBSIDIAN_RUNE_HEARTBLOCKV2);
         Registry.register(Registry.BLOCK, new Identifier(Obsblocks.MOD_ID, "obsidian_rune_energy_block"),OBSIDIAN_RUNE_ENERGY_BLOCK);

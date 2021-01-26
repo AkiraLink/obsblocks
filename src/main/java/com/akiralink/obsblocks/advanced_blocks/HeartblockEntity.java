@@ -49,13 +49,8 @@ public class HeartblockEntity extends BlockEntity implements IAnimatable {
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event)
     {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("obsidian_rune_heartblockv2.animation", false));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("portalopening", true));
         return PlayState.CONTINUE;
-    }
-
-    public BlockRenderType getRenderType(BlockState state)
-    {
-        return BlockRenderType.ENTITYBLOCK_ANIMATED;
     }
 
     @Override

@@ -101,6 +101,7 @@ public class Obsblocks implements ModInitializer,ClientModInitializer {
     public static final RegistryKey<Biome> ANCIENTLAND_KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier("obsblocks", "ancientland"));
 
     public void onInitializeClient() {
+        GeckoLib.initialize();
         System.out.println("Obsblocks: Starting Client Initializer!");
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OBSIDIAN_RUNE_HEARTBLOCK, RenderLayer.getCutout());
         EntityRendererRegistry.INSTANCE.register(Ancient_Zombie, (entityRenderDispatcher_1, context) -> new AncientZombieRenderer(entityRenderDispatcher_1));
@@ -144,7 +145,7 @@ public class Obsblocks implements ModInitializer,ClientModInitializer {
     public void onInitialize() {
 
         //APIS
-        GeckoLib.initialize();
+        //GeckoLib.initialize();
 
         // Ancient Entrance
         FabricStructureBuilder.create(new Identifier("obsblocks", "ancient_entrance"), ANCIENT_ENTRANCE)
