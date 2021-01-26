@@ -1,3 +1,3 @@
 {
-    "parent": "obsblocks:block/obsidian_rune_heartblock"
+    "parent": "minecraft:block/obsidian"
 }

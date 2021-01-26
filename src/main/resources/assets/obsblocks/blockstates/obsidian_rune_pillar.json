@@ -1,5 +1,16 @@
 {
   "variants": {
-    "": { "model": "obsblocks:block/obsidian_rune_pillar" }
+    "axis=x": {
+      "model": "obsblocks:block/obsidian_rune_pillar_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "obsblocks:block/obsidian_rune_pillar"
+    },
+    "axis=z": {
+      "model": "obsblocks:block/obsidian_rune_pillar_horizontal",
+      "x": 90
+    }
   }
 }

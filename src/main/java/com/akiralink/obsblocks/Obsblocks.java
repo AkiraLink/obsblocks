@@ -1,5 +1,7 @@
 package com.akiralink.obsblocks;
 
+import com.akiralink.obsblocks.advanced_blocks.HeartblockClass;
+import com.akiralink.obsblocks.advanced_blocks.HeartblockEntity;
 import com.akiralink.obsblocks.biomes.CustomBiome;
 import com.akiralink.obsblocks.entities.AncientZombie;
 import com.akiralink.obsblocks.features.AncientEnergyOutbreak;
@@ -7,6 +9,7 @@ import com.akiralink.obsblocks.features.AncientPortalEntrance;
 import com.akiralink.obsblocks.generator.AncientGenerator;
 import com.akiralink.obsblocks.registry.ModBlocks;
 import com.akiralink.obsblocks.renderer.AncientZombieRenderer;
+import com.akiralink.obsblocks.renderer.HeartblockRenderer;
 import com.akiralink.obsblocks.sound.ModMusic;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
@@ -16,6 +19,7 @@ import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
 import net.fabricmc.fabric.api.biome.v1.OverworldClimate;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
@@ -57,6 +61,9 @@ import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
 import net.fabricmc.fabric.api.biome.v1.OverworldClimate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import software.bernie.example.client.renderer.tile.FertilizerTileRenderer;
+import software.bernie.example.registry.TileRegistry;
+import software.bernie.geckolib3.GeckoLib;
 
 import static com.akiralink.obsblocks.registry.ModItems.registerItems;
 
@@ -70,12 +77,20 @@ public class Obsblocks implements ModInitializer,ClientModInitializer {
 
     /// Features
 
+    // Portal Entrance
+    public static final StructurePieceType ANCIENT_ENTRANCE_PIECE = AncientGenerator.MyPiece::new;
+    private static final StructureFeature<DefaultFeatureConfig> ANCIENT_ENTRANCE = new AncientPortalEntrance(DefaultFeatureConfig.CODEC);
+    private static final ConfiguredStructureFeature<?, ?> ANCIENT_ENTRANCE_CONFIGURED = ANCIENT_ENTRANCE.configure(DefaultFeatureConfig.DEFAULT);
+
+
+    // Ancient Temple
     public static final StructurePieceType MY_PIECE = AncientGenerator.MyPiece::new;
     private static final StructureFeature<DefaultFeatureConfig> MY_STRUCTURE = new AncientPortalEntrance(DefaultFeatureConfig.CODEC);
     private static final ConfiguredStructureFeature<?, ?> MY_CONFIGURED = MY_STRUCTURE.configure(DefaultFeatureConfig.DEFAULT);
 
-    private static final Feature<DefaultFeatureConfig> ANCIENT_ENERGY_OUTBREAK = new AncientEnergyOutbreak(DefaultFeatureConfig.CODEC);
 
+    // Ancient Energy Outbreak Feature
+    private static final Feature<DefaultFeatureConfig> ANCIENT_ENERGY_OUTBREAK = new AncientEnergyOutbreak(DefaultFeatureConfig.CODEC);
     public static final ConfiguredFeature<?, ?> ANCIENT_ENERGY_OUTBREAK_CONFIGURED = ANCIENT_ENERGY_OUTBREAK.configure(FeatureConfig.DEFAULT)
             .decorate(Decorator.CHANCE.configure(new ChanceDecoratorConfig(5)));
 
@@ -89,6 +104,7 @@ public class Obsblocks implements ModInitializer,ClientModInitializer {
         System.out.println("Obsblocks: Starting Client Initializer!");
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OBSIDIAN_RUNE_HEARTBLOCK, RenderLayer.getCutout());
         EntityRendererRegistry.INSTANCE.register(Ancient_Zombie, (entityRenderDispatcher_1, context) -> new AncientZombieRenderer(entityRenderDispatcher_1));
+        BlockEntityRendererRegistry.INSTANCE.register(ModBlocks.HEARTBLOCK_V2, HeartblockRenderer::new);
     }
 
     // registering Entities
@@ -127,9 +143,24 @@ public class Obsblocks implements ModInitializer,ClientModInitializer {
     @Override
     public void onInitialize() {
 
+        //APIS
+        GeckoLib.initialize();
 
         // Ancient Entrance
+        FabricStructureBuilder.create(new Identifier("obsblocks", "ancient_entrance"), ANCIENT_ENTRANCE)
+                .step(GenerationStep.Feature.SURFACE_STRUCTURES)
+                .defaultConfig(32, 8, 12345)
+                .adjustsSurface()
+                .register();
+
+        RegistryKey<ConfiguredStructureFeature<?, ?>> ancientEntranceKey = RegistryKey.of(Registry.CONFIGURED_STRUCTURE_FEATURE_WORLDGEN,
+                new Identifier("obsblocks", "ancient_entrance"));
+
+        BuiltinRegistries.add(BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE, ancientEntranceKey.getValue(), ANCIENT_ENTRANCE_CONFIGURED);
+
+        // Ancient Temple
         Registry.register(Registry.STRUCTURE_PIECE, new Identifier("obsblocks", "my_piece"), MY_PIECE);
+
         FabricStructureBuilder.create(new Identifier("obsblocks", "ancient_temple"), MY_STRUCTURE)
                 .step(GenerationStep.Feature.SURFACE_STRUCTURES)
                 .defaultConfig(32, 8, 12345)
@@ -148,8 +179,8 @@ public class Obsblocks implements ModInitializer,ClientModInitializer {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, AncientEnergyOutbreakKey.getValue(), ANCIENT_ENERGY_OUTBREAK_CONFIGURED);
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(ANCIENTLAND_KEY), GenerationStep.Feature.UNDERGROUND_ORES, AncientEnergyOutbreakKey);
-        //BiomeModifications.addStructure(BiomeSelectors.includeByKey(ANCIENTLAND_KEY), myConfigured);
-        BiomeModifications.addStructure(BiomeSelectors.all(), myConfigured);
+        BiomeModifications.addStructure(BiomeSelectors.includeByKey(ANCIENTLAND_KEY), myConfigured);
+        //BiomeModifications.addStructure(BiomeSelectors.all(), myConfigured);
 
         //Custom Music
         //Registry.register(Registry.SOUND_EVENT_KEY, new Identifier(Obsblocks.MOD_ID, "ancientlandmusic"), ModMusic.ANCIENTLANDMUSIC);
@@ -162,6 +193,7 @@ public class Obsblocks implements ModInitializer,ClientModInitializer {
         // Add Biome as spawning biome
         OverworldBiomes.addContinentalBiome(ANCIENTLAND_KEY, OverworldClimate.TEMPERATE, 3D);
         OverworldBiomes.addContinentalBiome(ANCIENTLAND_KEY, OverworldClimate.COOL, 3D);
+
 
 
 

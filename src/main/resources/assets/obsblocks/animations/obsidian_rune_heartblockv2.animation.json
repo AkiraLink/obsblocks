@@ -1,0 +1,79 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.obsidian_rune_heartblock.new": {
+			"animation_length": 19,
+			"bones": {
+				"Light": {
+					"rotation": {
+						"8.2": {
+							"vector": [0, 0, 0]
+						},
+						"15.68": {
+							"vector": [0, -2000, 0]
+						}
+					},
+					"scale": {
+						"7.48": {
+							"vector": [1, 1, 1]
+						},
+						"12.36": {
+							"vector": [1, 5.4, 1],
+							"easing": "easeInQuad"
+						},
+						"15.68": {
+							"vector": [3, 6.2, 4.4]
+						}
+					}
+				},
+				"Heart": {
+					"rotation": {
+						"0.28": {
+							"vector": [0, 0, 0]
+						},
+						"2.88": {
+							"vector": [0, 360, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.08": {
+							"vector": [-13, 0, 0],
+							"easing": "step",
+							"easingArgs": [2]
+						},
+						"2.92": {
+							"vector": [-13, 0, 0],
+							"easing": "easeOutQuint"
+						},
+						"5.6": {
+							"vector": [-8.03, 0, 0]
+						},
+						"5.8": {
+							"vector": [-7, 0, 0],
+							"easing": "step"
+						}
+					}
+				},
+				"blackness": {
+					"scale": {
+						"15.52": {
+							"vector": [1, 1, 1]
+						},
+						"15.96": {
+							"vector": [300, 300, 300],
+							"easing": "easeInQuart"
+						},
+						"19.0": {
+							"vector": [300, 300, 300],
+							"easing": "easeInQuart"
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

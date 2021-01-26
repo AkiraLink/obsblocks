@@ -17,9 +17,11 @@ import java.util.Random;
 
 public class AncientGenerator{
     private static final Identifier ANCIENT_TEMPLE = new Identifier("obsblocks:portalentrance");
+    private static final Identifier ANCIENT_ENTRANCE = new Identifier("obsblocks:anciententrance");
 
     public static void addPieces(StructureManager manager, BlockPos pos, BlockRotation rotation, List<StructurePiece> pieces) {
         pieces.add(new MyPiece(manager, pos, ANCIENT_TEMPLE, rotation));
+        //pieces.add(new MyPiece(manager, pos, ANCIENT_ENTRANCE, rotation));
     }
 
     public static class MyPiece extends SimpleStructurePiece {
