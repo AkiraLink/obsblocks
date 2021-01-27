@@ -2,7 +2,7 @@
   "parent": "block/block",
   "textures": {
     "1": "geckolib3:block/default_box_side",
-    "2": "geckolib3:block/default_box_top",
+    "2": "minecraft:block/obsidian",
     "particle": "geckolib3:block/default_box_top"
   },
   "elements": [

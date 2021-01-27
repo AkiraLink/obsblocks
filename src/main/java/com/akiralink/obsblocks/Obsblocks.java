@@ -1,6 +1,6 @@
 package com.akiralink.obsblocks;
 
-import com.akiralink.obsblocks.advanced_blocks.HeartblockClass;
+import com.akiralink.obsblocks.advanced_blocks.HeartBlock;
 import com.akiralink.obsblocks.advanced_blocks.HeartblockEntity;
 import com.akiralink.obsblocks.biomes.CustomBiome;
 import com.akiralink.obsblocks.entities.AncientZombie;
@@ -24,13 +24,9 @@ import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.structure.v1.FabricStructureBuilder;
-import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
-import net.kyrptonaught.customportalapi.portal.PortalIgnitionSource;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.pattern.BlockPattern;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.SkyProperties;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -39,31 +35,19 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.structure.StructurePieceType;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeEffects;
-import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilder;
-import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
-import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
-import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
-import net.fabricmc.fabric.api.biome.v1.OverworldClimate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import software.bernie.example.client.renderer.tile.FertilizerTileRenderer;
-import software.bernie.example.registry.TileRegistry;
 import software.bernie.geckolib3.GeckoLib;
+import software.bernie.geckolib3.util.RegistryUtils;
 
 import static com.akiralink.obsblocks.registry.ModItems.registerItems;
 
@@ -103,9 +87,11 @@ public class Obsblocks implements ModInitializer,ClientModInitializer {
     public void onInitializeClient() {
         GeckoLib.initialize();
         System.out.println("Obsblocks: Starting Client Initializer!");
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OBSIDIAN_RUNE_HEARTBLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OBSIDIAN_RUNE_HEARTBLOCK_OLD, RenderLayer.getCutout());
         EntityRendererRegistry.INSTANCE.register(Ancient_Zombie, (entityRenderDispatcher_1, context) -> new AncientZombieRenderer(entityRenderDispatcher_1));
         BlockEntityRendererRegistry.INSTANCE.register(ModBlocks.HEARTBLOCK_V2, HeartblockRenderer::new);
+
+
     }
 
     // registering Entities
@@ -143,6 +129,7 @@ public class Obsblocks implements ModInitializer,ClientModInitializer {
 
     @Override
     public void onInitialize() {
+
 
         //APIS
         //GeckoLib.initialize();
@@ -200,7 +187,10 @@ public class Obsblocks implements ModInitializer,ClientModInitializer {
 
         FabricDefaultAttributeRegistry.register(Ancient_Zombie, AncientZombie.createZombieAttributes());
         //Ancient_Zombie.createZombieAttributes();
-        CustomPortalApiRegistry.addPortal(ModBlocks.OBSIDIAN_RUNE_PILLAR, PortalIgnitionSource.FluidSource(Fluids.LAVA), new Identifier("obsblocks", "ancientdimension"), 51, 52, 49);
+
+        // Custom Portal
+        //CustomPortalApiRegistry.addPortal(ModBlocks.OBSIDIAN_RUNE_PILLAR, PortalIgnitionSource.FluidSource(Fluids.LAVA), new Identifier("obsblocks", "ancientdimension"), 51, 52, 49);
+
         LOGGER.debug("Obsblocks: \"Load Complete Event\" Starting...");
         System.out.println("Obsblocks: Portals loaded!");
         onInitializeClient();
@@ -208,6 +198,7 @@ public class Obsblocks implements ModInitializer,ClientModInitializer {
         registerItems();
         System.out.println("Obsblocks: Items loaded!");
         ModBlocks.registerBlocks();
+
         System.out.println("Obsblocks: Blocks loaded!");
         //ModEntities.registerEntities();
         System.out.println("Obsblocks: Entities loaded!");

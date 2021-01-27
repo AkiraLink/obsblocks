@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.obsidian_rune_heartblock",
+				"identifier": "geometry.unknown",
 				"texture_width": 128,
 				"texture_height": 256,
 				"visible_bounds_width": 3,

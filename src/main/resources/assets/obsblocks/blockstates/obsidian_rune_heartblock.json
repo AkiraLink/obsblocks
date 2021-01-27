@@ -1,5 +1,5 @@
 {
   "variants": {
-    "": { "model": "obsblocks:block/obsidian_rune_heartblock" }
+    "": { "model": "geckolib3:block/box" }
   }
 }
