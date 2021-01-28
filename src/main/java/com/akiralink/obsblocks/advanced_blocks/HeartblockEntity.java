@@ -1,9 +1,8 @@
 package com.akiralink.obsblocks.advanced_blocks;
 
 import com.akiralink.obsblocks.registry.ModBlocks;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.block.entity.BlockEntityType;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -24,28 +23,22 @@ public class HeartblockEntity extends BlockEntity implements IAnimatable {
     public AnimationController HeartController = new AnimationController(this, "heartcontroller", 0, this::predicate);
     private AnimationBuilder HeartBuilder = new AnimationBuilder().addAnimation("portalopening", false);
 
+
+
     public HeartblockEntity() {
 
         super(ModBlocks.HEARTBLOCK_V2);
     }
 
-    // Serialize the BlockEntity
     @Override
-    public CompoundTag toTag(CompoundTag tag) {
-        super.toTag(tag);
-
-        // Save the current value of the number to the tag
-        tag.putInt("activated", activated);
-
-        return tag;
+    public BlockEntityType<?> getType(){
+        return ModBlocks.HEARTBLOCK_V2;
     }
+    // Serialize the BlockEntity
+
 
     // Deserialize the BlockEntity
-    @Override
-    public void fromTag(BlockState state, CompoundTag tag) {
-        super.fromTag(state, tag);
-        activated = tag.getInt("activated");
-    }
+
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event)
     {

@@ -21,6 +21,9 @@
   "entrypoints": {
     "main": [
       "com.akiralink.obsblocks.Obsblocks"
+    ],
+    "client": [
+      "com.akiralink.obsblocks.ObsblocksClient"
     ]
   },
   "mixins": [

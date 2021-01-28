@@ -1,36 +1,25 @@
 package com.akiralink.obsblocks;
 
-import com.akiralink.obsblocks.advanced_blocks.HeartBlock;
-import com.akiralink.obsblocks.advanced_blocks.HeartblockEntity;
 import com.akiralink.obsblocks.biomes.CustomBiome;
 import com.akiralink.obsblocks.entities.AncientZombie;
 import com.akiralink.obsblocks.features.AncientEnergyOutbreak;
 import com.akiralink.obsblocks.features.AncientPortalEntrance;
 import com.akiralink.obsblocks.generator.AncientGenerator;
 import com.akiralink.obsblocks.registry.ModBlocks;
-import com.akiralink.obsblocks.renderer.AncientZombieRenderer;
-import com.akiralink.obsblocks.renderer.HeartblockRenderer;
 import com.akiralink.obsblocks.sound.ModMusic;
-import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
 import net.fabricmc.fabric.api.biome.v1.OverworldClimate;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.structure.v1.FabricStructureBuilder;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.structure.StructurePieceType;
@@ -46,13 +35,11 @@ import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import software.bernie.geckolib3.GeckoLib;
-import software.bernie.geckolib3.util.RegistryUtils;
 
 import static com.akiralink.obsblocks.registry.ModItems.registerItems;
 
 
-public class Obsblocks implements ModInitializer,ClientModInitializer {
+public class Obsblocks implements ModInitializer {
 
 
     public static Logger LOGGER = LogManager.getLogger();
@@ -84,15 +71,6 @@ public class Obsblocks implements ModInitializer,ClientModInitializer {
     //registering Biome
     public static final RegistryKey<Biome> ANCIENTLAND_KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier("obsblocks", "ancientland"));
 
-    public void onInitializeClient() {
-        GeckoLib.initialize();
-        System.out.println("Obsblocks: Starting Client Initializer!");
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OBSIDIAN_RUNE_HEARTBLOCK_OLD, RenderLayer.getCutout());
-        EntityRendererRegistry.INSTANCE.register(Ancient_Zombie, (entityRenderDispatcher_1, context) -> new AncientZombieRenderer(entityRenderDispatcher_1));
-        BlockEntityRendererRegistry.INSTANCE.register(ModBlocks.HEARTBLOCK_V2, HeartblockRenderer::new);
-
-
-    }
 
     // registering Entities
 
@@ -193,7 +171,6 @@ public class Obsblocks implements ModInitializer,ClientModInitializer {
 
         LOGGER.debug("Obsblocks: \"Load Complete Event\" Starting...");
         System.out.println("Obsblocks: Portals loaded!");
-        onInitializeClient();
         System.out.println("Hello Fabric World! <3 Obsblocks Mod is loading!");
         registerItems();
         System.out.println("Obsblocks: Items loaded!");
