@@ -1,8 +1,10 @@
 package com.akiralink.obsblocks.advanced_blocks;
 
 import com.akiralink.obsblocks.registry.ModBlocks;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.nbt.CompoundTag;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -15,7 +17,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 public class HeartblockEntity extends BlockEntity implements IAnimatable {
 
 
-    private int activated = 7;
+    private int activated = 0;
     private String controllerName = "popupController";
     public int playAni = HeartBlock.playAni;
 
@@ -36,6 +38,21 @@ public class HeartblockEntity extends BlockEntity implements IAnimatable {
     }
     // Serialize the BlockEntity
 
+    @Override
+    public CompoundTag toTag(CompoundTag tag) {
+        super.toTag(tag);
+
+        // Save the current value of the number to the tag
+        tag.putInt("activated", activated);
+
+        return tag;
+    }
+
+    @Override
+    public void fromTag(BlockState state, CompoundTag tag) {
+        super.fromTag(state, tag);
+        activated = tag.getInt("activated");
+    }
 
     // Deserialize the BlockEntity
 

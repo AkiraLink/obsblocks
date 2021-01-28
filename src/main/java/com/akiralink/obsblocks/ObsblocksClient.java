@@ -4,6 +4,8 @@ import com.akiralink.obsblocks.registry.ModBlocks;
 import com.akiralink.obsblocks.renderer.AncientZombieRenderer;
 import com.akiralink.obsblocks.renderer.HeartblockRenderer;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
@@ -11,7 +13,7 @@ import net.minecraft.client.render.RenderLayer;
 import software.bernie.geckolib3.GeckoLib;
 
 import static com.akiralink.obsblocks.Obsblocks.Ancient_Zombie;
-
+@Environment(EnvType.CLIENT)
 public class ObsblocksClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {

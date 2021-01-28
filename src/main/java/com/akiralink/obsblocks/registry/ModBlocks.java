@@ -1,6 +1,5 @@
 package com.akiralink.obsblocks.registry;
 
-import com.akiralink.obsblocks.Obsblocks;
 import com.akiralink.obsblocks.advanced_blocks.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
@@ -12,7 +11,8 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import software.bernie.geckolib3.util.RegistryUtils;
+
+import static com.akiralink.obsblocks.Obsblocks.MOD_ID;
 
 
 public class ModBlocks {
@@ -67,24 +67,26 @@ public class ModBlocks {
 
     //public static final AbstractBlock ANCIENT_RUNE_TORCH = new ObsidianTorch(new AbstractBlock.Settings(Material.STONE,MaterialColor.BLACK),)
     public static HeartBlock OBSIDIAN_RUNE_HEARTBLOCK = new HeartBlock();
-    public static final BlockEntityType<HeartblockEntity> HEARTBLOCK_V2 = RegistryUtils.registerBlockEntity("heartblocktile", BlockEntityType.Builder.create(HeartblockEntity::new, ModBlocks.OBSIDIAN_RUNE_HEARTBLOCK));
+    //public static final BlockEntityType<HeartblockEntity> HEARTBLOCK_V2 = (BlockEntityType<HeartblockEntity>) RegistryUtils.registerBlockEntity("heartblocktile", BlockEntityType.Builder.create(HeartblockEntity::new, ModBlocks.OBSIDIAN_RUNE_HEARTBLOCK).build(null));
 
 
-
+    public static BlockEntityType<HeartblockEntity> HEARTBLOCK_V2;
 
     public static void registerBlocks(){
+
+        HEARTBLOCK_V2 = Registry.register(Registry.BLOCK_ENTITY_TYPE, MOD_ID + ":heartblocktile", BlockEntityType.Builder.create(HeartblockEntity::new,  ModBlocks.OBSIDIAN_RUNE_HEARTBLOCK).build(null));
 
 
         //HEARTBLOCK_V2 = RegistryUtils.registerBlockEntity("heartblockv2", BlockEntityType.Builder.create(HeartblockEntity::new, new Block[]{ModBlocks.OBSIDIAN_RUNE_HEARTBLOCKV2}));
 
-        Registry.register(Registry.BLOCK, new Identifier(Obsblocks.MOD_ID, "obsidian_rune_heartblock"),OBSIDIAN_RUNE_HEARTBLOCK);
-        Registry.register(Registry.BLOCK, new Identifier(Obsblocks.MOD_ID, "obsidian_rune_energy_block"),OBSIDIAN_RUNE_ENERGY_BLOCK);
-        Registry.register(Registry.BLOCK, new Identifier(Obsblocks.MOD_ID, "obsidian_stairs"),OBSIDIAN_STAIRS);
-        Registry.register(Registry.BLOCK, new Identifier(Obsblocks.MOD_ID, "obsidian_slab"),OBSIDIAN_SLAB);
-        Registry.register(Registry.BLOCK, new Identifier(Obsblocks.MOD_ID, "obsidian_rune_pillar"),OBSIDIAN_RUNE_PILLAR);
-        Registry.register(Registry.BLOCK, new Identifier(Obsblocks.MOD_ID, "obsidian_rune_heartblock_old"), OBSIDIAN_RUNE_HEARTBLOCK_OLD);
-        Registry.register(Registry.BLOCK, new Identifier(Obsblocks.MOD_ID, "obsidian_rune_ore"), OBSIDIAN_RUNE_ORE);
-        Registry.register(Registry.BLOCK, new Identifier(Obsblocks.MOD_ID, "obsidian_brick"), OBSIDIAN_BRICK);
-        Registry.register(Registry.BLOCK, new Identifier(Obsblocks.MOD_ID, "obsidian_chiseled_brick"), OBSIDIAN_CHISELED_BRICK);
+        Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_rune_heartblock"),OBSIDIAN_RUNE_HEARTBLOCK);
+        Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_rune_energy_block"),OBSIDIAN_RUNE_ENERGY_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_stairs"),OBSIDIAN_STAIRS);
+        Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_slab"),OBSIDIAN_SLAB);
+        Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_rune_pillar"),OBSIDIAN_RUNE_PILLAR);
+        Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_rune_heartblock_old"), OBSIDIAN_RUNE_HEARTBLOCK_OLD);
+        Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_rune_ore"), OBSIDIAN_RUNE_ORE);
+        Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_brick"), OBSIDIAN_BRICK);
+        Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_chiseled_brick"), OBSIDIAN_CHISELED_BRICK);
     }
 }

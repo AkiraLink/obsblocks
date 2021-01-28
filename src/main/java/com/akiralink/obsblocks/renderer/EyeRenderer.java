@@ -1,11 +1,13 @@
 package com.akiralink.obsblocks.renderer;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.feature.EyesFeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
-import net.minecraft.client.render.entity.feature.SpiderEyesFeatureRenderer;
 import net.minecraft.util.Identifier;
 
+@Environment(EnvType.CLIENT)
 public class EyeRenderer extends EyesFeatureRenderer {
     public EyeRenderer(FeatureRendererContext featureRendererContext) {
         super(featureRendererContext);

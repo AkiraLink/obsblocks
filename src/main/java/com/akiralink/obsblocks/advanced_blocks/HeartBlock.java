@@ -15,7 +15,7 @@ import java.util.List;
 
 public class HeartBlock extends FacingBlock implements BlockEntityProvider {
     public HeartBlock() {
-        super(AbstractBlock.Settings.of(Material.STONE));
+        super(AbstractBlock.Settings.of(Material.STONE).nonOpaque());
     }
 
     public static int playAni = 0;
