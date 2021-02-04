@@ -2,10 +2,12 @@ package com.akiralink.obsblocks;
 
 import com.akiralink.obsblocks.biomes.CustomBiome;
 import com.akiralink.obsblocks.entities.AncientZombie;
+import com.akiralink.obsblocks.entities.Penguin;
 import com.akiralink.obsblocks.features.AncientEnergyOutbreak;
 import com.akiralink.obsblocks.features.AncientPortalEntrance;
 import com.akiralink.obsblocks.generator.AncientGenerator;
 import com.akiralink.obsblocks.registry.ModBlocks;
+import com.akiralink.obsblocks.registry.ModEntities;
 import com.akiralink.obsblocks.sound.ModMusic;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -161,8 +163,8 @@ public class Obsblocks implements ModInitializer {
         OverworldBiomes.addContinentalBiome(ANCIENTLAND_KEY, OverworldClimate.COOL, 3D);
 
 
-
-
+        // Attribute Registry
+        FabricDefaultAttributeRegistry.register(ModEntities.PENGUIN, Penguin.createWolfAttributes());
         FabricDefaultAttributeRegistry.register(Ancient_Zombie, AncientZombie.createZombieAttributes());
         //Ancient_Zombie.createZombieAttributes();
 

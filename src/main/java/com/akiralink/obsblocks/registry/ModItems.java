@@ -2,12 +2,16 @@ package com.akiralink.obsblocks.registry;
 
 import com.akiralink.obsblocks.ModFood;
 import com.akiralink.obsblocks.Obsblocks;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
+import com.akiralink.obsblocks.advanced_items.ObsidianRuneSword;
+import com.akiralink.obsblocks.materials.ObsidanToolMaterial;
+import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class ModItems {
+
+    //Tool Items
+    public static ToolItem ANCIENT_RUNE_SWORD = new ObsidianRuneSword(ObsidanToolMaterial.OBSIDAN_TOOL_MATERIAL, 10, -1.5F, new Item.Settings().group(ItemGroup.COMBAT).group(Obsblocks.OBSBLOCK_GROUP));
 
     //Items
     public static final Item OBSIDIAN_HEART = new Item(new Item.Settings().group(Obsblocks.OBSBLOCK_GROUP));
@@ -42,6 +46,7 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(Obsblocks.MOD_ID, "obsidian_rune_piece"), OBSIDIAN_RUNE_PIECE);
         Registry.register(Registry.ITEM, new Identifier(Obsblocks.MOD_ID, "obsidian_rune_pillar"), OBSIDIAN_RUNE_PILLAR);
         Registry.register(Registry.ITEM, new Identifier(Obsblocks.MOD_ID, "obsidian_rune_dust"), OBSIDIAN_RUNE_DUST);
+        Registry.register(Registry.ITEM, new Identifier(Obsblocks.MOD_ID, "ancient_rune_sword"), ANCIENT_RUNE_SWORD);
         Registry.register(Registry.ITEM, new Identifier(Obsblocks.MOD_ID, "obsidian_nugget"), OBSIDIAN_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(Obsblocks.MOD_ID, "obsidian_rune_ore"), OBSIDIAN_RUNE_ORE);
         Registry.register(Registry.ITEM, new Identifier(Obsblocks.MOD_ID, "obsidian_rune_heartblock_old"), new BlockItem(ModBlocks.OBSIDIAN_RUNE_HEARTBLOCK_OLD, new Item.Settings().group(Obsblocks.OBSBLOCK_GROUP)));

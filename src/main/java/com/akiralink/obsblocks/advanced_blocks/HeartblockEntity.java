@@ -5,6 +5,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.nbt.CompoundTag;
+import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -64,7 +65,9 @@ public class HeartblockEntity extends BlockEntity implements IAnimatable {
         if (playAni == 1){
             //System.out.println("Activated");
             event.getController().setAnimation(HeartBuilder);
-            HeartBlock.playAni = 0;
+            if (HeartController.getAnimationState() == AnimationState.Stopped){
+                HeartBlock.playAni = 0;
+            }
             return PlayState.CONTINUE;
 
         }

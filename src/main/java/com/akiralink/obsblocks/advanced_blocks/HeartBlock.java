@@ -1,17 +1,26 @@
 package com.akiralink.obsblocks.advanced_blocks;
 
+import com.akiralink.obsblocks.registry.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+
+import static net.minecraft.entity.EquipmentSlot.MAINHAND;
 
 public class HeartBlock extends FacingBlock implements BlockEntityProvider {
     public HeartBlock() {
@@ -50,7 +59,6 @@ public class HeartBlock extends FacingBlock implements BlockEntityProvider {
 
     // Animation Stuff
 
-    /*
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
 
@@ -66,7 +74,7 @@ public class HeartBlock extends FacingBlock implements BlockEntityProvider {
                     playAni = 1;
                     //HeartblockEntity.HeartController.markNeedsReload();
                     //HeartblockEntity.HeartController.setAnimation(HeartblockEntity.HeartBuilder);
-                    player.teleport(player.getX(),90D, player.getZ(),true);
+                    //player.teleport(player.getX(),90D, player.getZ(),true);
                     //playAni = 0;
                 }
                 else{
@@ -85,6 +93,6 @@ public class HeartBlock extends FacingBlock implements BlockEntityProvider {
         return ActionResult.SUCCESS;
 }
 
-     */
+
 
 }
