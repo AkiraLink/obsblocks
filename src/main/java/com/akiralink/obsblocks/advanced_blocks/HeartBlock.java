@@ -1,20 +1,27 @@
 package com.akiralink.obsblocks.advanced_blocks;
 
+import com.akiralink.obsblocks.Obsblocks;
 import com.akiralink.obsblocks.registry.ModItems;
+import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.Properties;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -25,6 +32,7 @@ import static net.minecraft.entity.EquipmentSlot.MAINHAND;
 public class HeartBlock extends FacingBlock implements BlockEntityProvider {
     public HeartBlock() {
         super(AbstractBlock.Settings.of(Material.STONE).nonOpaque());
+        setDefaultState(this.stateManager.getDefaultState().with(Properties.FACING, Direction.SOUTH));
     }
 
     public static int playAni = 0;
@@ -65,6 +73,13 @@ public class HeartBlock extends FacingBlock implements BlockEntityProvider {
 
 
         if (!world.isClient) {
+            ServerWorld serverWorld = (ServerWorld) player.getEntityWorld();
+            if (player.experienceLevel == 25){
+                Vec3d tptarget = new Vec3d(10, 10, 10);
+                ServerWorld ancientworld = serverWorld.getServer().getWorld(Obsblocks.ANCIENT_DIMENSION);
+
+                FabricDimensions.teleport(player, ancientworld, new TeleportTarget(tptarget,tptarget,0,0));
+            }
             if (player.experienceLevel >= 30){
 
                 // fianally works

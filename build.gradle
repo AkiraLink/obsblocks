@@ -55,7 +55,7 @@ dependencies {
 	// To change the versions see the gradle.properties file
 	//minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	//modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation 'software.bernie.geckolib:fabric-1.16.5-geckolib:3.0.10:dev'
+	modImplementation 'software.bernie.geckolib:geckolib-fabric-1.16.5:3.0.24:dev'
 	//include "software.bernie.geckolib:fabric-1.16.5-geckolib:3.0.7:dev"
 	//include "curse.maven:geckolib-398667:3150537"
 	//modImplementation 'net.kyrptonaught:customportalapi:0.0.1-beta20-1.16'

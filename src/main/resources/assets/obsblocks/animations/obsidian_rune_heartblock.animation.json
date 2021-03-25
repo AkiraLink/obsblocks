@@ -2,7 +2,7 @@
 	"format_version": "1.8.0",
 	"animations": {
 		"portalopening": {
-			"animation_length": 19,
+			"animation_length": 35.76,
 			"bones": {
 				"Light": {
 					"rotation": {
@@ -40,20 +40,20 @@
 							"vector": [0, 0, 0]
 						},
 						"0.08": {
-							"vector": [-13, 0, 0],
-							"easing": "step",
-							"easingArgs": [2]
+							"vector": [0.01, 0, -15.75]
 						},
-						"2.92": {
-							"vector": [-13, 0, 0],
-							"easing": "easeOutQuint"
+						"2.88": {
+							"vector": [0.01, 0, -15.75],
+							"easing": "easeInCubic"
 						},
 						"5.6": {
-							"vector": [-8.03, 0, 0]
+							"vector": [0.01, 0, -7.75],
+							"easing": "easeInSine"
 						},
 						"5.8": {
-							"vector": [-7, 0, 0],
-							"easing": "step"
+							"vector": [0.01, 0, -7],
+							"easing": "step",
+							"easingArgs": [2]
 						}
 					}
 				},
@@ -63,6 +63,9 @@
 							"vector": [1, 1, 1]
 						},
 						"15.96": {
+							"vector": [40, 154.27, 154.27]
+						},
+						"16.04": {
 							"vector": [300, 300, 300],
 							"easing": "easeInQuart"
 						},

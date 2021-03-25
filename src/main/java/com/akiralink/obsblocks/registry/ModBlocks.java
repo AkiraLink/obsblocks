@@ -32,7 +32,7 @@ public class ModBlocks {
 
     public static final Block OBSIDIAN_SLAB = new SlabBlock(FabricBlockSettings.copy(Blocks.OBSIDIAN));
 
-    public static final Block OBSIDIAN_STAIRS = new ObsidianStairs(Blocks.OBSIDIAN.getDefaultState(), FabricBlockSettings.copy(Blocks.DIRT));
+    public static final Block OBSIDIAN_STAIRS = new ObsidianStairs(Blocks.OBSIDIAN.getDefaultState(), FabricBlockSettings.copy(Blocks.OBSIDIAN));
 
     public static final Block OBSIDIAN_RUNE_PILLAR = new ObsidianPillarBlock(FabricBlockSettings.
             of(Material.STONE)
@@ -84,7 +84,7 @@ public class ModBlocks {
         Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_stairs"),OBSIDIAN_STAIRS);
         Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_slab"),OBSIDIAN_SLAB);
         Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_rune_pillar"),OBSIDIAN_RUNE_PILLAR);
-        Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_rune_heartblock_old"), OBSIDIAN_RUNE_HEARTBLOCK_OLD);
+        //Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_rune_heartblock_old"), OBSIDIAN_RUNE_HEARTBLOCK_OLD);
         Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_rune_ore"), OBSIDIAN_RUNE_ORE);
         Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_brick"), OBSIDIAN_BRICK);
         Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "obsidian_chiseled_brick"), OBSIDIAN_CHISELED_BRICK);

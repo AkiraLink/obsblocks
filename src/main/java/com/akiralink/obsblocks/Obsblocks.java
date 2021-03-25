@@ -29,6 +29,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
@@ -49,6 +50,9 @@ public class Obsblocks implements ModInitializer {
     public static final String MOD_ID = "obsblocks";
 
     /// Features
+
+    public static final RegistryKey<World> ANCIENT_DIMENSION = RegistryKey.of(Registry.DIMENSION, new Identifier("obsblocks", "ancientdimension"));
+
 
     // Portal Entrance
     public static final StructurePieceType ANCIENT_ENTRANCE_PIECE = AncientGenerator.MyPiece::new;
@@ -167,6 +171,8 @@ public class Obsblocks implements ModInitializer {
         FabricDefaultAttributeRegistry.register(ModEntities.PENGUIN, Penguin.createWolfAttributes());
         FabricDefaultAttributeRegistry.register(Ancient_Zombie, AncientZombie.createZombieAttributes());
         //Ancient_Zombie.createZombieAttributes();
+
+        //Registering Dimensions
 
         // Custom Portal
         //CustomPortalApiRegistry.addPortal(ModBlocks.OBSIDIAN_RUNE_PILLAR, PortalIgnitionSource.FluidSource(Fluids.LAVA), new Identifier("obsblocks", "ancientdimension"), 51, 52, 49);

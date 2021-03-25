@@ -11,5 +11,13 @@
   "item.obsblocks.obsidian_apple": "Obsidian Apple",
   "item.obsblocks.obsidian_rune_apple": "Obsidian Rune Apple",
   "item.obsblocks.obsidian_rune_piece": "Obsidian Rune Piece",
-  "biome.obsblocks.ancientland": "Ancient Land"
+  "biome.obsblocks.ancientland": "Ancient Land",
+  "item.obsblocks.ancient_rune_sword": "Ancient Rune Sword",
+  "block.obsblocks.obsidian_slab": "Obsidian Slab",
+  "block.obsblocks.obsidian_stairs": "Obsidian Stairs",
+  "block.obsblocks.obsidian_rune_energy_block": "Obsidian Rune Energy Block",
+  "block.obsblocks.obsidian_brick": "Obsidian Brick",
+  "block.obsblocks.obsidian_chiseled_brick": "Obsidian Chiseled Brick",
+  "entity.obsblocks.ancient_zombie":"Ancient Zombie",
+  "entity.obsblocks.penguin":"Funny Penguin"
 }

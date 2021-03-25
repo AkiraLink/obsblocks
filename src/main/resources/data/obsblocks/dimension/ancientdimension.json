@@ -4,17 +4,19 @@
     "type": "minecraft:flat",
     "seed": 4,
     "settings": {
-      "biome": "minecraft:bamboo_jungle",
+      "biome": "obsblock:ancientland",
       "lakes": false,
       "features": false,
       "layers": [
         {
-          "block": "minecraft:stone",
+          "block": "minecraft:obsidian",
           "height": 1
         }
       ],
       "structures": {
-        "structures": {}
+        "structures": {
+
+        }
       }
     }
   }
